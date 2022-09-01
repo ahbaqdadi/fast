@@ -25,9 +25,11 @@ class CartNumber
     private $account;
 
     #[ORM\OneToMany(mappedBy: 'fromCart', targetEntity: Transactions::class)]
+    #[ORM\JoinColumn(nullable: true)]
     private $transactionsFrom;
 
     #[ORM\OneToMany(mappedBy: 'toCart', targetEntity: Transactions::class)]
+    #[ORM\JoinColumn(nullable: true)]
     private $transactionsTo;
 
     public function __construct()
