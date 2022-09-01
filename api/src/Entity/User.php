@@ -24,6 +24,9 @@ class User
     #[ORM\OneToMany(mappedBy: 'userAccount', targetEntity: Account::class)]
     private $accounts;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $mobileNumber;
+
     public function __construct()
     {
         $this->accounts = new ArrayCollection();
@@ -72,6 +75,18 @@ class User
                 $account->setUserAccount(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMobileNumber(): ?string
+    {
+        return $this->mobileNumber;
+    }
+
+    public function setMobileNumber(string $mobileNumber): self
+    {
+        $this->mobileNumber = $mobileNumber;
 
         return $this;
     }
