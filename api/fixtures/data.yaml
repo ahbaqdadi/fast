@@ -1,0 +1,55 @@
+App\Entity\User:
+    user_1:
+      email: "ahbaqdadi@gmail.com"
+      mobileNumber: "09304017380"
+    user_2:
+      email: "amir@gmail.com"
+      mobileNumber: "09304017381" 
+    user_3:
+      email: "ali@gmail.com"
+      mobileNumber: "09304017382"
+    user_4:
+      email: "hasan@gmail.com"
+      mobileNumber: "09304017383"            
+App\Entity\Account:
+    account_1:
+      number: "111"
+      money: "100"
+      userAccount: "@user_1"
+    account_2:
+      number: "222"
+      money: "200"
+      userAccount: "@user_2"
+    account_3:
+      number: "333"
+      money: "300"
+      userAccount: "@user_3"
+    account_4:
+      number: "444"
+      money: "400"
+      userAccount: "@user_4"
+App\Entity\CartNumber:
+    cartNumber_1:
+      number: "6037-7015-1112-2024"
+      account: "@account_1"
+    cartNumber_2:
+      number: "6037-7015-1112-2025"
+      account: "@account_1"
+    cartNumber_3:
+      number: "6037-7015-1112-2625"
+      account: "@account_2"
+    cartNumber_4:
+      number: "6037-7015-1312-2625"
+      account: "@account_2"
+    cartNumber_5:
+      number: "6037-7515-1312-2625"
+      account: "@account_3"
+    cartNumber_6:
+      number: "6037-7615-1312-2625"
+      account: "@account_3"
+    cartNumber_7:
+      number: "6077-7515-1312-2625"
+      account: "@account_4"
+    cartNumber_8:
+      number: "6837-7615-1312-2625"
+      account: "@account_4"
