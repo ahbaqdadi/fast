@@ -5,9 +5,25 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TransactionsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Dto\CreateTransactions;
 
 #[ORM\Entity(repositoryClass: TransactionsRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    itemOperations: [
+        'get'
+    ],
+    collectionOperations: [
+        'get',
+        "create_transactions" => [
+            "status" => 202,
+            "messenger" => "input",
+            "input" => CreateTransactions::class,
+            "output" => false,
+            "method" => "POST",
+            "path" => "/transactions/create_transaction"
+          ]
+    ],
+)]
 class Transactions
 {
     #[ORM\Id]
