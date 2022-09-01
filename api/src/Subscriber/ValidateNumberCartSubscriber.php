@@ -3,11 +3,13 @@ namespace App\Subscriber;
 
 use ApiPlatform\Core\EventListener\EventPriorities;
 use App\Dto\CreateTransactions;
+use Exception;
 use phpDocumentor\Reflection\Types\This;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\HttpKernel\KernelEvents;
+use ApiPlatform\Core\Exception\InvalidArgumentException;
 
 final class ValidateNumberCartSubscriber implements EventSubscriberInterface
 {
@@ -25,18 +27,9 @@ final class ValidateNumberCartSubscriber implements EventSubscriberInterface
 
     public function handlePreValidate(ViewEvent $event): void
     {
-        $dto = $event->getControllerResult();
-        if ($dto instanceof CreateTransactions && $event->getRequest()->isMethod('POST')) {
 
-            if (!$this->checkNumber($dto->fromCart) || !$this->checkNumber($dto->toCart)) {
-
-            }
-        }
     }
 
-    private function checkNumber($number) {
-        if (!is_numeric($number) || strlen($number) != 16) {
-            return false;
-        }
-    }
+
+
 }

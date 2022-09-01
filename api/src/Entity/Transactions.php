@@ -35,15 +35,24 @@ class Transactions
     private $payment;
 
     #[ORM\ManyToOne(targetEntity: CartNumber::class, inversedBy: 'transactionsFrom')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $fromCart;
 
     #[ORM\ManyToOne(targetEntity: CartNumber::class, inversedBy: 'transactionsTo')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]
     private $toCart;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'integer', nullable: true)]
     private $fee;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $uuid;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $status;
+
+    #[ORM\Column(type: 'text', nullable: true)]
+    private $messages;
 
     public function getId(): ?int
     {
@@ -94,6 +103,42 @@ class Transactions
     public function setFee(int $fee): self
     {
         $this->fee = $fee;
+
+        return $this;
+    }
+
+    public function getUuid(): ?string
+    {
+        return $this->uuid;
+    }
+
+    public function setUuid(string $uuid): self
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    public function getMessages(): ?string
+    {
+        return $this->messages;
+    }
+
+    public function setMessages(?string $messages): self
+    {
+        $this->messages = $messages;
 
         return $this;
     }
